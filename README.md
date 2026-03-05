@@ -6,8 +6,8 @@ It also explores the **possibility of using quantized models** (e.g., TFLite) to
 
 ## Where to look first
 
-- **Working / exploratory notebook:** [autoencoder.ipynb](autoencoder.ipynb)
-- **More consolidated notebook:** [autoencoder_draft.ipynb](autoencoder_draft.ipynb)  [Refer this]
+
+- **working/consolidated notebook:** [autoencoder_draft.ipynb](autoencoder_draft.ipynb)  [Refer this]
 - **Dependencies:** [requirements.txt](requirements.txt)
 
 ## Data layout
