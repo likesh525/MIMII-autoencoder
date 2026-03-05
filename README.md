@@ -31,6 +31,15 @@ Two input configurations are compared:
 - **Full features (18 dims)**
 - **Top-N features (5 dims)** (feature selection done in the notebook)
 
+Top‑N selection rule: After training an 18‑D autoencoder, we compute per‑feature reconstruction MSE on an evaluation split `(X_combined_test = [normal val] + [abnormal test]),` rank features by this per‑feature MSE (descending), and keep the top 5 indices. We then slice the original feature matrix to those 5 columns and train/evaluate separate 5‑D models
+
+## Quantization
+**TFLite quantization (what kind?):** 
+
+The notebook uses post‑training full‑integer INT8 quantization via `tf.lite.TFLiteConverter with optimizations = [tf.lite.Optimize.DEFAULT], supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS_INT8], and inference_input_type = inference_output_type = tf.int8.`
+
+ A representative (calibration) dataset is provided from a small slice of the scaled normal training data (first ~100–200 samples) using a generator (`representative_data_gen*`). Features are scaled with `MinMaxScaler(feature_range=(-1, 1))` for quantization experiments.
+
 ## Saved artifacts
 
 Trained models are not included in the repo:
