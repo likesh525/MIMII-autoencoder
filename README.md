@@ -53,9 +53,9 @@ Trained models are not included in the repo:
 
 | Model | Input dims | AUROC | AUPRC |
 |---|---:|---:|---:|
-| `large_ae_full_features` | 18 | 0.986637 | 0.992548 |
-| `shallow_ae_full_features` | 18 | 0.974873 | 0.986584 |
-| `small_ae_full_features` | 18 | 0.972991 | 0.986404 |
+| `large_ae_full_features` | 18 | 0.99172 | 0.99529 |
+| `shallow_ae_full_features` | 18 | 0.98673 | 0.99265 |
+| `small_ae_full_features` | 18 | 0.98014 | 0.98991 |
 
 **Finding:** Using the **full 18-feature** input consistently outperformed using only the 5-feature subset.
 
@@ -63,18 +63,18 @@ Trained models are not included in the repo:
 
 | Model | Input dims | AUROC | AUPRC |
 |---|---:|---:|---:|
-| `large_ae_topN_features` | 5 | 0.947770 | 0.973597 |
-| `shallow_ae_topN_features` | 5 | 0.942500 | 0.971342 |
-| `small_ae_topN_features` | 5 | 0.941464 | 0.971155 |
+| `large_ae_topN_features` | 5 | 0.97553 | 0.98935 |
+| `shallow_ae_topN_features` | 5 | 0.97205 | 0.98796 |
+| `small_ae_topN_features` | 5 | 0.97271 | 0.98823 |
 
 ### Edge-style deployment baseline (TFLite)
 
 | Model | Input dims | AUROC | AUPRC | Mean latency (ms/batch) |
 |---|---:|---:|---:|---:|
-| `small_model(tflite)_full_features` | 18 | 0.453887 | 0.661609 | 1.528710 |
-| `small_model(tflite)_topN_features` | 5 | 0.316582 | 0.665958 | 1.479690 |
-| `shallow_model(tflite)_full_features` | 18 | 0.860437 | 0.941244 | 1.676835 |
-| `shallow_model(tflite)_topN_features` | 5 | 0.324299 | 0.676364 | 1.550580 |
+| `small_model(tflite)_full_features` | 18 | 0.38274 | 0.70511 | 1.57232 |
+| `small_model(tflite)_topN_features` | 5 | 0.08771 | 0.45763 | 1.449385 |
+| `shallow_model(tflite)_full_features` | 18 | 0.92509 | 0.996783 | 1.546835 |
+| `shallow_model(tflite)_topN_features` | 5 | 0.324299 | 0.456364 | 1.550580 |
 
 **Finding:** TFLite inference is ~1.5–1.7 ms per batch in this desktop benchmark. Accuracy depends heavily on the architecture and feature set: the **shallow full-features TFLite** (`shallow_model(tflite)_full_features`) model retained strong AUROC, while the **small TFLite** variants performed poorly.
 
@@ -92,3 +92,4 @@ Trained models are not included in the repo:
 
 - Benchmarks were recorded on a **desktop runtime** (not on physical MCU hardware).
 - Some model naming in tables may include minor typos (e.g., a trailing `d` in one TFLite model label inside the notebook output). The corresponding `.tflite` filenames in the repo are the authoritative artifacts.
+- TopN feature selection is problematic, data leakage needs to be corrected
