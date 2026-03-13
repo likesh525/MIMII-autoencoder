@@ -12,10 +12,12 @@ It also explores the **possibility of using quantized models** (e.g., TFLite) to
 
 ## Data layout
 
-The notebooks expect the dataset under:
+The notebooks expect the dataset under: 
 
 - `data/normal/`
 - `data/abnormal/`
+
+ Dataset can be downloaded from kaggle -  https://www.kaggle.com/datasets/senaca/mimii-pump-sound-dataset/data 
 
 ## Approach (high level)
 
